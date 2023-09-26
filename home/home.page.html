@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Consulta de CEP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label position="floating">Digite o CEP:</ion-label>
+    <ion-input [(ngModel)]="cep" type="text"></ion-input>
+  </ion-item>
+
+  <ion-button (click)="esqueceuCEP()" expand="full">Esqueceu o CEP?</ion-button>
+
+  <ion-card *ngIf="mostrarEsqueceuCEP">
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Estado (Sigla):</ion-label>
+        <ion-input [(ngModel)]="estado" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Cidade:</ion-label>
+        <ion-input [(ngModel)]="cidade" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Parte da Rua:</ion-label>
+        <ion-input [(ngModel)]="parteRua" type="text"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="buscarEndereco()" expand="full">Buscar Endereço</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button (click)="buscarCEP()" expand="full">Buscar</ion-button>
+
+  <ion-card *ngIf="dadosCEP">
+    <ion-card-header>
+      Informações do CEP {{ cep }}
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Logradouro:</strong> {{ dadosCEP.logradouro }}</p>
+      <p><strong>Bairro:</strong> {{ dadosCEP.bairro }}</p>
+      <p><strong>Cidade:</strong> {{ dadosCEP.localidade }}</p>
+      <p><strong>Estado:</strong> {{ dadosCEP.uf }}</p>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card *ngIf="dadosE">
+    <ion-card-header>
+      Informações do Endereço
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Logradouro:</strong> {{ dadosE.logradouro }}</p>
+      <p><strong>Bairro:</strong> {{ dadosE.bairro }}</p>
+      <p><strong>Cidade:</strong> {{ dadosE.localidade }}</p>
+      <p><strong>Estado:</strong> {{ dadosE.uf }}</p>
+      <p><strong>CEP:</strong> {{ dadosE.cep }}</p>
+    </ion-card-content>
+  </ion-card>
+  
+
+</ion-content>
